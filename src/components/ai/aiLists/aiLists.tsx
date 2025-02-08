@@ -30,6 +30,7 @@ const ais: AiInterface[] = [
     active: true,
   },
 ];
+// testing
 
 const AiLists: React.FC = () => {
   return (
