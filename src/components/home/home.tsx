@@ -10,6 +10,7 @@ const Home = () => {
   return ( 
     <div className="home-container">
     {/* Logo Section */}
+    
     <div className="logo">
       <img src={logo} alt="AI Prompt Explorer Logo" />
     </div>
