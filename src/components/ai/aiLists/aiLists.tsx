@@ -29,12 +29,38 @@ const ais: AiInterface[] = [
     logo: "Claude Logo",
     active: true,
   },
+  {
+    name: "Claude",
+    call: () => {
+      console.log("returned Claude");
+    },
+    color: "blue",
+    logo: "Claude Logo",
+    active: true,
+  },
+  {
+    name: "Clauffffffffffffffffffffde",
+    call: () => {
+      console.log("returned Claude");
+    },
+    color: "red",
+    logo: "Claude Logo",
+    active: true,
+  },
+  {
+    name: "Clauasdfasfasdfadfde",
+    call: () => {
+      console.log("returned Claude");
+    },
+    color: "orange",
+    logo: "Claude Logo",
+    active: true,
+  },
 ];
-// testing
 
 const AiLists: React.FC = () => {
   return (
-    <main>
+    <section id="aiLists">
       {ais.map((ai) => (
         <div key={ai.name} style={{ backgroundColor: ai.color }}>
           <div className="header">{ai.name} Comp</div>
@@ -43,7 +69,7 @@ const AiLists: React.FC = () => {
           <button onClick={ai.call}>Call AI</button>
         </div>
       ))}
-    </main>
+    </section>
   );
 };
 

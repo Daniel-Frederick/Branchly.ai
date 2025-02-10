@@ -3,6 +3,7 @@ import "./profile.css";
 import Openai from "./openai/openai";
 import Claude from "./claude/claude";
 import AiLists from "./aiLists/aiLists";
+import Input from "./input/input";
 
 const Profile = () => {
   // Make this similar UI to Claude
@@ -17,13 +18,8 @@ const Profile = () => {
   return (
     // This will be the header component with the buttons to enable or disable specfic ai
     <main>
-      {/* Input Prompt */}
-      <input type="text" placeholder="Enter prompt..." />
-
-      {/* Select ai */}
       <AiLists></AiLists>
-
-      {/* History */}
+      <Input></Input>
     </main>
   );
 };

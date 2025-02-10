@@ -1,0 +1,14 @@
+#input {
+  display: flex;
+  background-color: black;
+  /* TODO: Change from pixels to relative units and fix input box position */
+  width: 500px;
+  height: 100px;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
