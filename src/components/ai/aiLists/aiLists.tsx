@@ -9,7 +9,7 @@ interface AiInterface {
   active: boolean;
 }
 
-// Make this a Global variable
+// TODO: Make this a Global array
 const ais: AiInterface[] = [
   {
     name: "OpenAI",
@@ -30,7 +30,7 @@ const ais: AiInterface[] = [
     active: true,
   },
   {
-    name: "Claude",
+    name: "ClClauasdfaClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdesfasdfadfdeaude",
     call: () => {
       console.log("returned Claude");
     },
@@ -44,6 +44,51 @@ const ais: AiInterface[] = [
       console.log("returned Claude");
     },
     color: "red",
+    logo: "Claude Logo",
+    active: true,
+  },
+  {
+    name: "Clauasdfasfasdfadfde",
+    call: () => {
+      console.log("returned Claude");
+    },
+    color: "orange",
+    logo: "Claude Logo",
+    active: true,
+  },
+  {
+    name: "Clauasdfasfasdfadfde",
+    call: () => {
+      console.log("returned Claude");
+    },
+    color: "orange",
+    logo: "Claude Logo",
+    active: true,
+  },
+  {
+    name: "ClauasdfaClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdesfasdfadfde",
+    call: () => {
+      console.log("returned Claude");
+    },
+    color: "yellow",
+    logo: "Claude Logo",
+    active: true,
+  },
+  {
+    name: "Clauasdfasfasdfadfde",
+    call: () => {
+      console.log("returned Claude");
+    },
+    color: "orange",
+    logo: "Claude Logo",
+    active: true,
+  },
+  {
+    name: "Clauasdfasfasdfadfde",
+    call: () => {
+      console.log("returned Claude");
+    },
+    color: "yellow",
     logo: "Claude Logo",
     active: true,
   },

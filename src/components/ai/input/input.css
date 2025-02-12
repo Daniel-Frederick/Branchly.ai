@@ -1,14 +1,25 @@
-#input {
+#rootInput {
   display: flex;
   background-color: black;
-  /* TODO: Change from pixels to relative units and fix input box position */
-  width: 500px;
-  height: 100px;
+  width: 60vw;
+  min-height: 4rem;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   align-items: center;
   justify-content: center;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 0;
+  transform: translateX(-50%);
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+  z-index: 1000;
+}
+
+#input {
+}
+
+#selectable {
+}
+
+#history {
 }
