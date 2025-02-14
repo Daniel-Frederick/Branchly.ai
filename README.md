@@ -1,4 +1,4 @@
-# AI-Prompt-Explorer
+# Branchly.ai
 
 React + Vite
 
@@ -6,6 +6,7 @@ cmd for running react:
 npm run dev
 
 cmd for running flask backend:
+npm install axios
 flask --app app run
 
 other cmds:
