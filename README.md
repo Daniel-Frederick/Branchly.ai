@@ -1,20 +1,35 @@
 # Branchly.ai
 
-React + Vite
+## React + Vite
 
-cmd for running react:
-npm run dev
+## How to setup project
 
-cmd for running flask backend:
+node v22.13.1
+npm install
 npm install axios
-flask --app app run
 
-other cmds:
-pip install flask flask-cors flask-sqlalchemy
-python3 -m venv venv                                            
-source venv/bin/activate
-pip install flask-cors 
+### For Linux/Mac:
 
-In order for the project to run correctly, you must run both:
-npm run dev
-flask --app app run
+- python3 -m venv venv
+- source venv/bin/activate
+- pip install flask flask-cors flask-sqlalchemy
+- flask --app app run
+
+### For Windows (Powershell):
+
+- python -m venv venv
+- venv\Scripts\Activate.ps1
+- If you get a script execution error, run:
+  - Set-ExecutionPolicy Unrestricted -Scope Process
+- pip install flask flask-cors flask-sqlalchemy
+- flask --app app run
+
+## Running the Project
+
+### React
+
+- npm run dev
+
+### Flask
+
+- flask --app app run
