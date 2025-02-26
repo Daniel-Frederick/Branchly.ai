@@ -5,6 +5,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Home from "./components/home/home";
 import Profile from "./components/ai/profile";
+import Test from "./components/test/test"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </Router>
   );

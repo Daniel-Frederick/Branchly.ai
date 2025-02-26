@@ -1,5 +1,4 @@
 import React from "react";
-import "./aiLists.css";
 
 interface AiInterface {
   name: string;
@@ -9,109 +8,31 @@ interface AiInterface {
   active: boolean;
 }
 
-// TODO: Make this a Global array
 const ais: AiInterface[] = [
-  {
-    name: "OpenAI",
-    call: () => {
-      console.log("returned OpenAI");
-    },
-    color: "green",
-    logo: "OpenAI Logo",
-    active: true,
-  },
-  {
-    name: "Claude",
-    call: () => {
-      console.log("returned Claude");
-    },
-    color: "yellow",
-    logo: "Claude Logo",
-    active: true,
-  },
-  {
-    name: "ClClauasdfaClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdesfasdfadfdeaude",
-    call: () => {
-      console.log("returned Claude");
-    },
-    color: "blue",
-    logo: "Claude Logo",
-    active: true,
-  },
-  {
-    name: "Clauffffffffffffffffffffde",
-    call: () => {
-      console.log("returned Claude");
-    },
-    color: "red",
-    logo: "Claude Logo",
-    active: true,
-  },
-  {
-    name: "Clauasdfasfasdfadfde",
-    call: () => {
-      console.log("returned Claude");
-    },
-    color: "orange",
-    logo: "Claude Logo",
-    active: true,
-  },
-  {
-    name: "Clauasdfasfasdfadfde",
-    call: () => {
-      console.log("returned Claude");
-    },
-    color: "orange",
-    logo: "Claude Logo",
-    active: true,
-  },
-  {
-    name: "ClauasdfaClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdeClauasdfasfasdfadfdesfasdfadfde",
-    call: () => {
-      console.log("returned Claude");
-    },
-    color: "yellow",
-    logo: "Claude Logo",
-    active: true,
-  },
-  {
-    name: "Clauasdfasfasdfadfde",
-    call: () => {
-      console.log("returned Claude");
-    },
-    color: "orange",
-    logo: "Claude Logo",
-    active: true,
-  },
-  {
-    name: "Clauasdfasfasdfadfde",
-    call: () => {
-      console.log("returned Claude");
-    },
-    color: "yellow",
-    logo: "Claude Logo",
-    active: true,
-  },
-  {
-    name: "Clauasdfasfasdfadfde",
-    call: () => {
-      console.log("returned Claude");
-    },
-    color: "orange",
-    logo: "Claude Logo",
-    active: true,
-  },
+  { name: "OpenAI", call: () => console.log("returned OpenAI"), color: "bg-green-500", logo: "🧠", active: true },
+  { name: "Claude", call: () => console.log("returned Claude"), color: "bg-yellow-500", logo: "🤖", active: true },
+  { name: "VeryLongAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", call: () => console.log("returned Claude"), color: "bg-blue-500", logo: "⚡", active: true },
+  { name: "ClauFFFFFFFFFFFF", call: () => console.log("returned Claude"), color: "bg-red-500", logo: "💡", active: true },
 ];
 
 const AiLists: React.FC = () => {
   return (
-    <section id="aiLists">
+    <section id="aiLists" className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {ais.map((ai) => (
-        <div key={ai.name} style={{ backgroundColor: ai.color }}>
-          <div className="header">{ai.name} Comp</div>
-          <div className="logo">{ai.logo}</div>
-          <p>{ai.name} AI</p>
-          <button onClick={ai.call}>Call AI</button>
+        <div key={ai.name} className={`p-4 rounded-xl shadow-lg text-white ${ai.color} flex flex-col items-center text-center`}>
+          {/* Logo */}
+          <div className="text-4xl">{ai.logo}</div>
+
+          {/* AI Name */}
+          <div className="font-bold text-lg mt-2 break-words w-full">{ai.name}</div>
+
+          {/* Call Button */}
+          <button
+            onClick={ai.call}
+            className="mt-3 bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-200 transition duration-200"
+          >
+            Call AI
+          </button>
         </div>
       ))}
     </section>
@@ -119,3 +40,4 @@ const AiLists: React.FC = () => {
 };
 
 export default AiLists;
+

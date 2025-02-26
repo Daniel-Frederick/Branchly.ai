@@ -5,15 +5,30 @@ import axios from "axios"
 const Input = () => {
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    axios.get("http://127.0.0.1:5000/api/data").then((response) => {
-      setData(response.data)
+useEffect(() => {
+  axios.get("http://127.0.0.1:5000/testing")
+    .then((response) => {
+      console.log("response.data: ", response.data);
+      setData(response.data);
+      // Note: "data" won't reflect the update immediately here
     })
     .catch((error) => {
-        console.log("ERROR: Could not obtain backend Data")
-      });
-  }, [])
+      console.log("ERROR: Could not obtain backend Data");
+    });
+}, []);
+
   
+  // useEffect(() => {
+  //   axios.get("http://127.0.0.1:5000/testing").then((response) => {
+  //     console.log("respoinse.data: ", response.data)
+  //     setData(response.data)
+  //     console.log("data: ", data)
+  //   })
+  //   .catch((error) => {
+  //       console.log("ERROR: Could not obtain backend Data")
+  //     });
+  // }, [])
+  //
 
   return (
     // This will be the header component with the buttons to enable or disable specfic ai

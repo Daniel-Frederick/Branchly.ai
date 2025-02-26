@@ -13,7 +13,7 @@ npm install axios
 - python3 -m venv venv
 - source venv/bin/activate
 - pip install flask flask-cors flask-sqlalchemy
-- flask --app app run
+- python3 -m flask --app app run
 
 ### For Windows (Powershell):
 
@@ -32,4 +32,4 @@ npm install axios
 
 ### Flask
 
-- flask --app app run
+- python3 -m flask --app app run
