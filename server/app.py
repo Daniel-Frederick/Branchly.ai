@@ -1,7 +1,9 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import sqlite3
 
 app = Flask(__name__)
+CORS(app)
 
 # SQLite setup (this will create a new database file on the first run)
 def init_db():
@@ -23,6 +25,10 @@ def add_user():
     conn.commit()
     conn.close()
     return jsonify({"message": "User added!"})
+
+@app.route("/testing")
+def testing():
+    return "testing is working"
 
 if __name__ == "__main__":
     init_db()
