@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App.tsx";
 import ReactDOM from "react-dom/client";
 import React from "react";
-import { FirebaseProvider } from "/Users/ramonbordelies/AiPrompExplorer/AI-Prompt-Explorer/src/FirebaseProvider.tsx"; // Custom provider for auth state
+import { FirebaseProvider } from "./FirebaseProvider.tsx"; // Custom provider for auth state
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
