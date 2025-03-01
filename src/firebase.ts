@@ -1,8 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import.meta.env
+
+const apiKey = import.meta.env.VITE_API_KEY;
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB-PZTb33KtBHbAzePLYh4ToxBzh5Dp8hQ",
+  apiKey: apiKey,
   authDomain: "aipromptexplorer-ebe5b.firebaseapp.com",
   projectId: "aipromptexplorer-ebe5b",
   storageBucket: "aipromptexplorer-ebe5b.firebasestorage.app",
