@@ -1,16 +1,19 @@
 import React, { useEffect, useState, useRef} from "react";
 import "./input.css";
 import axios from "axios"
+import UserHistory from "../../../services/history.ts"
 
 const Input = () => {
   const [data, setData] = useState(null);
   const inputRef = useRef(null);
-  const [userInput, setUserInput] = useState("");
+  const [userInput, setUserInput] = useState<string>("");
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (inputRef.current && inputRef.current.value.trim() !== "") {
       setUserInput(inputRef.current.value)
       inputRef.current.value = "";
+      const data = await UserHistory.getUserHistory();
+      console.log("Data: ", data)
     } else {
       console.log("Input is empty!")
     }
