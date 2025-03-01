@@ -28,3 +28,7 @@ server/flask_env
 server/venv
 
 .env
+
+profile.db 
+__init__.cpython-313.pyc
+profile.cpython-313.pyc
