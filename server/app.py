@@ -1,36 +1,45 @@
-from flask import Flask, jsonify
+
+from flask import Flask, jsonify, request
 from flask_cors import CORS
-import sqlite3
+from models.profile import init_db, SessionLocal, Profile
 
 app = Flask(__name__)
 CORS(app)
 
-# SQLite setup (this will create a new database file on the first run)
-def init_db():
-    conn = sqlite3.connect('example.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)''')
-    conn.commit()
-    conn.close()
+# Initialize the database
+init_db()
 
 @app.route("/")
 def home():
     return jsonify({"message": "Hello from Flask!"})
 
-@app.route("/api/add-user")
-def add_user():
-    conn = sqlite3.connect('example.db')
-    c = conn.cursor()
-    c.execute("INSERT INTO users (name, age) VALUES (?, ?)", ("John Doe", 30))
-    conn.commit()
-    conn.close()
-    return jsonify({"message": "User added!"})
+# @app.route("/api/add-user", methods=["POST"])
+# def add_profile():
+#     if not request.is_json:  # Ensure request is JSON
+#         return jsonify({"error": "Request must be JSON"}), 400
+#
+#     data = request.get_json()  # Safely parse JSON
+#     if not data:
+#         return jsonify({"error": "Empty request body"}), 400
+#
+#     email = data.get("email")
+#     user_text = data.get("userCreatedText")
+#
+#     if not email or not user_text:
+#         return jsonify({"error": "Missing email or text"}), 400
+#
+#     session = SessionLocal()
+#     new_user = Profile(email=email, userCreatedText=user_text)
+#     session.add(new_user)
+#     session.commit()
+#     session.close()
+#
+#     return jsonify({"message": "User added successfully!"}), 201
 
 @app.route("/testing")
 def testing():
     return "testing is working"
 
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
 
