@@ -1,6 +1,6 @@
 # Branchly.ai
 
-## React + Vite
+### React + Vite + Flask + SQLite
 
 ## How to setup project
 
@@ -32,4 +32,9 @@ npm install axios
 
 ### Flask
 
+- npm run api
+
+or
+
+- cd server
 - python3 -m flask --app app run
