@@ -12,7 +12,7 @@ class UserHistory {
   async getUserHistory(): Promise<string> {
     try {
       // Replace '/api/get-history' with the actual endpoint from your Flask API
-      const response = await axios.get(`${this.baseURL}/`);
+      const response = await axios.get(`${this.baseURL}/api`);
 
       return response.data;
     } catch (error) {

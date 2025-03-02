@@ -9,7 +9,8 @@ CORS(app)
 # Initialize the database
 init_db()
 
-@app.route("/")
+# "/api" is a namespace for "/"
+@app.route("/api")
 def home():
     return jsonify({"message": "Hello from Flask!"})
 
