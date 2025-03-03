@@ -1,3 +1,4 @@
+// TODO: Move page to pages directory
 import React from "react";
 import "./home.css";
 import logo from "../../assets/branchlyai.jpg"; // Ensure you have a relevant image

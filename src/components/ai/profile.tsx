@@ -1,3 +1,4 @@
+// TODO: Move page to pages directory
 import React from "react";
 import "./profile.css";
 import Openai from "./openai/openai";
