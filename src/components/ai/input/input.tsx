@@ -2,8 +2,13 @@ import React, { useEffect, useState, useRef} from "react";
 import "./input.css";
 import axios from "axios"
 import UserHistory from "../../../services/history.ts"
+import { AiInterface } from "../../../types/AiInterface"
 
-const Input = () => {
+interface Prop {
+  ais: AiInterface[]
+}
+
+const Input: React.FC<Prop> = ({ais}) => {
   const [data, setData] = useState(null);
   const inputRef = useRef(null);
   const [userInput, setUserInput] = useState<string>("");
