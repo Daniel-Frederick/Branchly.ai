@@ -1,8 +1,6 @@
 // TODO: Move page to pages directory
 import React from "react";
 import "./profile.css";
-import Openai from "./openai/openai";
-import Claude from "./claude/claude";
 import AiLists from "./aiLists/aiLists";
 import Input from "./input/input";
 import { AiInterface } from "../../types/AiInterface"
