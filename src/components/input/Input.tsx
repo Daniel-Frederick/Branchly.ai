@@ -46,8 +46,12 @@ const Input: React.FC<Prop> = ({ais}) => {
 
       {/* Select ai */}
       <div id="selectable">
-        {/* Give list of selectable AI */}
-        <p>put the list of img elements here</p>
+        {/* Make the images horizontal  */}
+        <div>
+          {ais.map((ai) => (
+            <div key={ai.name}>{ai.logo}</div>
+          ))}
+        </div>
       </div>
 
       {/* History */}
