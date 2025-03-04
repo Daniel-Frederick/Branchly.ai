@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef} from "react";
-import "./input.css";
+import "./Input.css";
 import axios from "axios"
-import UserHistory from "../../../services/history.ts"
-import { AiInterface } from "../../../types/AiInterface"
+import UserHistory from "../../services/history.ts"
+import { AiInterface } from "../../types/AiInterface"
 
 interface Prop {
   ais: AiInterface[]
@@ -14,19 +14,26 @@ const Input: React.FC<Prop> = ({ais}) => {
   const [userInput, setUserInput] = useState<string>("");
 
   const handleClick = async () => {
-    if (inputRef.current && inputRef.current.value.trim() !== "") {
-      setUserInput(inputRef.current.value)
+    const inputValue = inputRef.current.value.trim();
+    if (inputRef.current && inputValue !== "") {
+      setUserInput(inputValue);
       inputRef.current.value = "";
       const data = await UserHistory.getUserHistory();
-      console.log("Data: ", data)
+      console.log("Data: ", data);
     } else {
-      console.log("Input is empty!")
+      console.log("Input is empty!");
     }
   }
 
   useEffect(() => {
     console.log("userInput: ", userInput)
   }, [userInput]);
+
+  // const handleEnterPress(event) {
+  //   if (event.key !== "Enter") return;
+  //   handleClick();
+  //   // onKeyDown={handleEnterPress}
+  // }
 
   return (
     // This will be the header component with the buttons to enable or disable specfic ai

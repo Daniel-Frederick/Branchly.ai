@@ -1,8 +1,7 @@
 // TODO: Move page to pages directory
 import React from "react";
-import "./profile.css";
-import AiLists from "./aiLists/aiLists";
-import Input from "./input/input";
+import AiLists from "../../components/aiLists/AiLists";
+import Input from "../../components/input/Input";
 import { AiInterface } from "../../types/AiInterface"
 
 const Profile = () => {

@@ -1,5 +1,7 @@
+// Component for styling each AI in the list
 import React from "react";
 import { AiInterface } from "../../types/AiInterface"
+import "./AiLists.css"
 
 interface Prop {
   ais: AiInterface[]

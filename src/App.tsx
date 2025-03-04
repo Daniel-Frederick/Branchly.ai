@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import Home from "./components/home/home";
-import Profile from "./components/ai/profile";
-import Test from "./pages/test/test"
+import Home from "./pages/home/Home";
+import Profile from "./pages/profile/Profile";
+import Test from "./pages/test/Test"
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 // TODO: Move page to pages directory
 import React from "react";
-import "./home.css";
+import "./Home.css";
 import logo from "../../assets/branchlyai.jpg"; // Ensure you have a relevant image
 import { signInWithGoogle, logout } from "../../firebase.ts";
 import { useAuth } from "../../FirebaseProvider.tsx";
