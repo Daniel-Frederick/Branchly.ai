@@ -49,10 +49,9 @@ const Input: React.FC<Prop> = ({ ais }) => {
         {/* Make the images horizontal  */}
         <div>
           {ais.map((ai) => (
-            // TODO: The checkbox styling is not working
             <label className="checkbox-wrapper" key={ai.name}>
-              <input className="checkbox-input" type="checkbox" />
-              <div>{ai.logo}</div>
+              <input className="checkbox-input" type="checkbox" defaultChecked/>
+              <div className="ai-logo">{ai.logo}</div>
             </label>
           ))}
         </div>

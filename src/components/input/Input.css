@@ -11,6 +11,14 @@ p {
   display: none;
 }
 
+.checkbox-input:checked + .ai-logo {
+  border: 2px solid green;
+}
+
+.checkbox-input:not(:checked) + .ai-logo {
+  border: 2px solid red;
+}
+
 #rootInput {
   display: flex;
   background-color: black;
