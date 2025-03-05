@@ -1,22 +1,30 @@
 // Component for styling each AI in the list
 import React from "react";
-import { AiInterface } from "../../types/AiInterface"
-import "./AiLists.css"
+import { AiInterface } from "../../types/AiInterface";
+import "./AiLists.css";
 
 interface Prop {
-  ais: AiInterface[]
+  ais: AiInterface[];
 }
 
-const AiLists: React.FC<Prop> = ({ais}) => {
+const AiLists: React.FC<Prop> = ({ ais }) => {
   return (
-    <section id="aiLists" className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <section
+      id="aiLists"
+      className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+    >
       {ais.map((ais) => (
-        <div key={ais.name} className={`p-4 rounded-xl shadow-lg text-white ${ais.color} flex flex-col items-center text-center`}>
+        <div
+          key={ais.name}
+          className={`p-4 rounded-xl shadow-lg text-white ${ais.color} flex flex-col items-center text-center`}
+        >
           {/* Logo */}
           <div className="text-4xl">{ais.logo}</div>
 
           {/* AI Name */}
-          <div className="font-bold text-lg mt-2 break-words w-full">{ais.name}</div>
+          <div className="font-bold text-lg mt-2 break-words w-full">
+            {ais.name}
+          </div>
 
           {/* Call Button */}
           <button
@@ -32,4 +40,3 @@ const AiLists: React.FC<Prop> = ({ais}) => {
 };
 
 export default AiLists;
-

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const TestComponent = () => {
   const [items, setItems] = useState([]);
@@ -8,9 +8,9 @@ const TestComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/test');
+        const response = await fetch("http://localhost:5000/api/test");
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         setItems(data);
@@ -31,9 +31,10 @@ const TestComponent = () => {
     <div>
       <h2>Test Items</h2>
       <ul>
-        {items.map(item => (
+        {items.map((item) => (
           <li key={item.id}>
-            {item.name} - Created at: {new Date(item.created_at).toLocaleString()}
+            {item.name} - Created at:{" "}
+            {new Date(item.created_at).toLocaleString()}
           </li>
         ))}
       </ul>

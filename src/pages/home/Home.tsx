@@ -25,22 +25,27 @@ const Home = () => {
 
       {/* Google Authentication */}
       <div>
-      {user ? (
-        <div>
-          {/* Displaying the user's profile picture */}
-          {user.photoURL && <img src={user.photoURL} alt="Profile" style={{ width: 100, borderRadius: '50%' }} />}
-          <h1 className="title">Welcome, {user.displayName}</h1>
-          
-          <button onClick={logout}>Sign Out</button>
-        </div>
-      ) : (
-        <div>
-          <h1 className="title">Please sign in to view your profile.</h1>
-          <button onClick={signInWithGoogle}>Sign In with Google</button>
-        </div>
-      )}
-    </div>
+        {user ? (
+          <div>
+            {/* Displaying the user's profile picture */}
+            {user.photoURL && (
+              <img
+                src={user.photoURL}
+                alt="Profile"
+                style={{ width: 100, borderRadius: "50%" }}
+              />
+            )}
+            <h1 className="title">Welcome, {user.displayName}</h1>
 
+            <button onClick={logout}>Sign Out</button>
+          </div>
+        ) : (
+          <div>
+            <h1 className="title">Please sign in to view your profile.</h1>
+            <button onClick={signInWithGoogle}>Sign In with Google</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

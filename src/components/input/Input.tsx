@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useRef} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Input.css";
-import axios from "axios"
-import UserHistory from "../../services/history.ts"
-import { AiInterface } from "../../types/AiInterface"
+import axios from "axios";
+import UserHistory from "../../services/history.ts";
+import { AiInterface } from "../../types/AiInterface";
 
 interface Prop {
-  ais: AiInterface[]
+  ais: AiInterface[];
 }
 
-const Input: React.FC<Prop> = ({ais}) => {
+const Input: React.FC<Prop> = ({ ais }) => {
   const [data, setData] = useState(null);
   const inputRef = useRef(null);
   const [userInput, setUserInput] = useState<string>("");
@@ -23,10 +23,10 @@ const Input: React.FC<Prop> = ({ais}) => {
     } else {
       console.log("Input is empty!");
     }
-  }
+  };
 
   useEffect(() => {
-    console.log("userInput: ", userInput)
+    console.log("userInput: ", userInput);
   }, [userInput]);
 
   // const handleEnterPress(event) {
@@ -49,14 +49,20 @@ const Input: React.FC<Prop> = ({ais}) => {
         {/* Make the images horizontal  */}
         <div>
           {ais.map((ai) => (
-            <div key={ai.name}>{ai.logo}</div>
+            // TODO: The checkbox is made but the styling needs to be changed
+            <label
+              key={ai.name}
+              style={{ cursor: "pointer", display: "block" }}
+            >
+              <input type="checkbox" style={{ display: "none" }} />
+              <div>{ai.logo}</div>
+            </label>
           ))}
         </div>
       </div>
 
       {/* History */}
-      <div id="history">
-     </div>
+      <div id="history"></div>
     </section>
   );
 };
