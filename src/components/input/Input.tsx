@@ -25,22 +25,25 @@ const Input: React.FC<Prop> = ({ ais }) => {
     }
   };
 
+  const handleEnterPress = (e) => {
+    if (e.key === "Enter") {
+      // TODO: Fix it so when you click shift + Enter, make a new line without entering given text 
+      // if (e.shiftKey) {}
+      handleClick();
+    }
+    // if (e.key === "Shift" && e.key === "Enter") inputRef + "\n"
+  }
+
   useEffect(() => {
     console.log("userInput: ", userInput);
   }, [userInput]);
-
-  // const handleEnterPress(event) {
-  //   if (event.key !== "Enter") return;
-  //   handleClick();
-  //   // onKeyDown={handleEnterPress}
-  // }
 
   return (
     // This will be the header component with the buttons to enable or disable specfic ai
     <section id="rootInput">
       {/* Input Prompt */}
       <div id="input">
-        <input type="text" placeholder="Enter prompt..." ref={inputRef} />
+        <textarea placeholder="Enter prompt..." onKeyDown={handleEnterPress} ref={inputRef} />
         <button onClick={handleClick}>Enter</button>
       </div>
 
