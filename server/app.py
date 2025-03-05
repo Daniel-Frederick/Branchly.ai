@@ -1,7 +1,6 @@
-
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from models.profile import init_db, SessionLocal, Profile
+from models.profile import init_db, SessionLocal, User, Prompt
 
 app = Flask(__name__)
 CORS(app)
@@ -9,37 +8,36 @@ CORS(app)
 # Initialize the database
 init_db()
 
-# "/api" is a namespace for "/"
 @app.route("/api")
 def home():
     return jsonify({"message": "Hello from Flask!"})
 
-# @app.route("/api/add-user", methods=["POST"])
-# def add_profile():
-#     if not request.is_json:  # Ensure request is JSON
-#         return jsonify({"error": "Request must be JSON"}), 400
-#
-#     data = request.get_json()  # Safely parse JSON
-#     if not data:
-#         return jsonify({"error": "Empty request body"}), 400
-#
-#     email = data.get("email")
-#     user_text = data.get("userCreatedText")
-#
-#     if not email or not user_text:
-#         return jsonify({"error": "Missing email or text"}), 400
-#
-#     session = SessionLocal()
-#     new_user = Profile(email=email, userCreatedText=user_text)
-#     session.add(new_user)
-#     session.commit()
-#     session.close()
-#
-#     return jsonify({"message": "User added successfully!"}), 201
+# Endpoint to add a prompt for a user
+@app.route("/api/add-prompt", methods=["POST"])
+def add_prompt():
+    if not request.is_json:
+        return jsonify({"error": "Request must be JSON"}), 400
 
-@app.route("/testing")
-def testing():
-    return "testing is working"
+    data = request.get_json()
+    user_email = data.get("email")
+    prompt_text = data.get("prompt")
+    if not user_email or not prompt_text:
+        return jsonify({"error": "Missing email or prompt"}), 400
+
+    session = SessionLocal()
+
+    # Find the user by email (or create a new user if needed)
+    user = session.query(User).filter(User.email == user_email).first()
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+
+    # Create a new prompt associated with the user
+    new_prompt = Prompt(user_id=user.id, prompt_text=prompt_text)
+    session.add(new_prompt)
+    session.commit()
+    session.close()
+
+    return jsonify({"message": "Prompt added successfully!"}), 201
 
 if __name__ == "__main__":
     app.run(debug=True)

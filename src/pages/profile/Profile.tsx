@@ -22,14 +22,14 @@ const Profile = () => {
     },
     {
       name: "VeryLongAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      call: () => console.log("returned Claude"),
+      call: () => console.log("returned VeryLongAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
       color: "bg-blue-500",
       logo: "⚡",
       active: true,
     },
     {
       name: "ClauFFFFFFFFFFFF",
-      call: () => console.log("returned Claude"),
+      call: () => console.log("returned ClauFFFFFFFFFFFF"),
       color: "bg-red-500",
       logo: "💡",
       active: true,
@@ -38,6 +38,10 @@ const Profile = () => {
 
   return (
     <main>
+      {/* TODO: This might be wrong, both components need to have access
+                to the same ai array, not separate copies.
+                This is because we need the "active" property to dynamically be shared.
+                Do we need to use Redux? */}
       <AiLists ais={ais}></AiLists>
       <Input ais={ais}></Input>
     </main>
