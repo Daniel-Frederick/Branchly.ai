@@ -1,3 +1,16 @@
+p {
+  color: red;
+}
+
+.checkbox-wrapper {
+  cursor: pointer;
+  display: block;
+}
+
+.checkbox-input {
+  display: none;
+}
+
 #rootInput {
   display: flex;
   background-color: black;
@@ -22,8 +35,4 @@
 }
 
 #history {
-}
-
-p {
-  color: red
 }
