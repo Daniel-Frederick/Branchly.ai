@@ -24,10 +24,9 @@ dist-ssr
 *.sw?
 
 server/__pycache__
+server/*/__pycache__
 server/flask_env
 server/venv
-profile.db 
-__init__.cpython-313.pyc
-profile.cpython-313.pyc
+server/*.db 
 
 .env

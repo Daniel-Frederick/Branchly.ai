@@ -14,6 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     if (user) {
+      // Store new user in database
       UserHistory.enterUser(user);
     }
   }, [user]);
