@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Input.css";
 import axios from "axios";
-import UserHistory from "../../services/history.ts";
+import Users from "../../services/users.ts";
 import { AiInterface } from "../../types/AiInterface";
 
 interface Prop {
@@ -18,7 +18,7 @@ const Input: React.FC<Prop> = ({ ais }) => {
     if (inputRef.current && inputValue !== "") {
       setUserInput(inputValue);
       inputRef.current.value = "";
-      const data = await UserHistory.getUserHistory();
+      const data = await Users.getUserHistory();
       console.log("Data: ", data);
     } else {
       console.log("Input is empty!");

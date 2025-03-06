@@ -1,6 +1,6 @@
 import axios from "axios"
 
-class UserHistory {
+class Users {
   // Define the base URL of your backend API (make sure this matches your Flask app's URL)
   private baseURL: string;
 
@@ -37,4 +37,4 @@ class UserHistory {
   }
 }
 
-export default new UserHistory("http://127.0.0.1:5000");
+export default new Users("http://127.0.0.1:5000");

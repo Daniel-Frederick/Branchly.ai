@@ -2,6 +2,7 @@ import React from "react";
 import AiLists from "../../components/aiLists/AiLists";
 import Input from "../../components/input/Input";
 import { AiInterface } from "../../types/AiInterface";
+import { useAuth } from "../../FirebaseProvider";
 
 const Profile = () => {
   const ais: AiInterface[] = [
@@ -35,8 +36,17 @@ const Profile = () => {
     },
   ];
 
+
+  // This should not be here, here for testing
+  const { user } = useAuth();
+
   return (
     <main>
+      {user ? (
+        <h1>Welcome, {user.displayName}</h1>
+      ) : (
+        <h1>Welcome, Random</h1>
+      )}
       {/* TODO: This might be wrong, both components need to have access
                 to the same ai array, not separate copies.
                 This is because we need the "active" property to dynamically be shared.

@@ -3,7 +3,7 @@ import "./Home.css";
 import logo from "../../assets/branchlyai.jpg"; // Ensure you have a relevant image
 import { signInWithGoogle, logout } from "../../firebase.ts";
 import { useAuth } from "../../FirebaseProvider.tsx";
-import UserHistory from "../../services/history.ts";
+import Users from "../../services/users";
 
 // This component will contain home page:
 // The Logo: A magnifiing glass looking at 'AI'
@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     if (user) {
       // Store new user in database
-      UserHistory.enterUser(user);
+      Users.enterUser(user);
     }
   }, [user]);
 
