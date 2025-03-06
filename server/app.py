@@ -12,32 +12,41 @@ init_db()
 def home():
     return jsonify({"message": "Hello from Flask!"})
 
-# Endpoint to add a prompt for a user
-@app.route("/api/add-prompt", methods=["POST"])
-def add_prompt():
+@app.route("/api/add_user", methods=["POST"])
+def add_user():
     if not request.is_json:
         return jsonify({"error": "Request must be JSON"}), 400
-
+    
     data = request.get_json()
     user_email = data.get("email")
-    prompt_text = data.get("prompt")
-    if not user_email or not prompt_text:
-        return jsonify({"error": "Missing email or prompt"}), 400
-
+    user_name = data.get("name")
+    user_pfp = data.get("pfp")
+    
+    if not user_email:
+        return jsonify({"error": "Missing email"}), 400
+    
     session = SessionLocal()
-
-    # Find the user by email (or create a new user if needed)
+    
+    # Check if user already exists
     user = session.query(User).filter(User.email == user_email).first()
-    if not user:
-        return jsonify({"error": "User not found"}), 404
-
-    # Create a new prompt associated with the user
-    new_prompt = Prompt(user_id=user.id, prompt_text=prompt_text)
-    session.add(new_prompt)
+    
+    if user:
+        # Update existing user
+        user.name = user_name
+        user.pfp = user_pfp
+    else:
+        # Create new user
+        new_user = User(email=user_email, name=user_name, pfp=user_pfp)
+        session.add(new_user)
+    
     session.commit()
+    user_id = user.id if user else session.query(User).filter(User.email == user_email).first().id
     session.close()
-
-    return jsonify({"message": "Prompt added successfully!"}), 201
+    
+    return jsonify({
+        "message": "User added/updated successfully!",
+        "user_id": user_id
+    }), 201
 
 if __name__ == "__main__":
     app.run(debug=True)

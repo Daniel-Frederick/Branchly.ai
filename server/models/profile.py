@@ -1,7 +1,6 @@
 from sqlalchemy import create_engine, Column, Integer, String, Text, ForeignKey, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-from datetime import datetime
 
 DATABASE_URL = "sqlite:///profile.db"
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
@@ -22,8 +21,6 @@ class Prompt(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     prompt_text = Column(Text, nullable=False)
-    response_text = Column(Text)
-    timestamp = Column(DateTime, default=datetime.utcnow)
     # Relationship back to the user
     user = relationship("User", back_populates="prompts")
 

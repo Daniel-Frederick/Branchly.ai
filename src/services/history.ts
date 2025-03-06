@@ -20,6 +20,21 @@ class UserHistory {
       throw new Error("Failed to fetch user history.");
     }
   }
+
+  async enterUser(userData): void {
+    try {
+      const response = await axios.post(`${this.baseURL}/api/add_user`, {
+        email: userData.email,
+        name: userData.displayName,
+        pfp: userData.photoURL
+      })
+
+      console.log("User added to database:", response.data);
+    } catch (error) {
+      console.error("Error: could not enter new user: ", error);
+      throw new Error("Failed to enter user");
+    }
+  }
 }
 
 export default new UserHistory("http://127.0.0.1:5000");

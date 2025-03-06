@@ -1,9 +1,9 @@
-// TODO: Move page to pages directory
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import logo from "../../assets/branchlyai.jpg"; // Ensure you have a relevant image
 import { signInWithGoogle, logout } from "../../firebase.ts";
 import { useAuth } from "../../FirebaseProvider.tsx";
+import UserHistory from "../../services/history.ts";
 
 // This component will contain home page:
 // The Logo: A magnifiing glass looking at 'AI'
@@ -11,6 +11,12 @@ import { useAuth } from "../../FirebaseProvider.tsx";
 // Google OAuth Login: https://www.youtube.com/watch?v=tgO_ADSvY1I
 const Home = () => {
   const { user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      UserHistory.enterUser(user);
+    }
+  }, [user]);
 
   return (
     <div className="home-container">
@@ -51,3 +57,12 @@ const Home = () => {
 };
 
 export default Home;
+
+// uid: Unique identifier
+// displayName: User's name from Google profile
+// email: User's email address
+// photoURL: URL to the user's profile picture
+// emailVerified: Boolean indicating if email is verified
+// phoneNumber: If available
+// providerData: Additional provider-specific information
+// metadata: Contains creation time and last sign-in time

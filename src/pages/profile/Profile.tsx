@@ -1,4 +1,3 @@
-// TODO: Move page to pages directory
 import React from "react";
 import AiLists from "../../components/aiLists/AiLists";
 import Input from "../../components/input/Input";
