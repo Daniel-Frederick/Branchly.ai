@@ -4,6 +4,57 @@ from models.profile import SessionLocal, User
 # Create a Blueprint for user-related routes
 user_bp = Blueprint('user', __name__)
 
+# Read - GET requests
+@user_bp.route("/get_user/<email>", methods=["GET"])
+def get_user(email):
+    session = SessionLocal()
+    
+    try:
+        user = session.query(User).filter(User.email == email).first()
+        
+        if not user:
+            return jsonify({"error": "User not found"}), 404
+            
+        return jsonify({
+            "user": {
+                "id": user.id,
+                "email": user.email,
+                "name": user.name,
+                "pfp": user.pfp
+            }
+        }), 200
+            
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+        
+    finally:
+        session.close()
+
+@user_bp.route("/get_all_users", methods=["GET"])
+def get_all_users():
+    session = SessionLocal()
+    
+    try:
+        users = session.query(User).all()
+        
+        result = []
+        for user in users:
+            result.append({
+                "id": user.id,
+                "email": user.email,
+                "name": user.name,
+                "pfp": user.pfp
+            })
+            
+        return jsonify({"users": result}), 200
+            
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+        
+    finally:
+        session.close()
+
+# Create - POST Requests
 @user_bp.route("/add_user", methods=["POST"])
 def add_user():
     # Require input to be json
@@ -61,57 +112,10 @@ def add_user():
             }
         }), 201   
     except Exception as e:
+        # Revert any changes that were made
         session.rollback()
         return jsonify({"error": str(e)}), 500
     
     finally:
         session.close()
 
-@user_bp.route("/get_user/<email>", methods=["GET"])
-def get_user(email):
-    session = SessionLocal()
-    
-    try:
-        user = session.query(User).filter(User.email == email).first()
-        
-        if not user:
-            return jsonify({"error": "User not found"}), 404
-            
-        return jsonify({
-            "user": {
-                "id": user.id,
-                "email": user.email,
-                "name": user.name,
-                "pfp": user.pfp
-            }
-        }), 200
-            
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-        
-    finally:
-        session.close()
-
-@user_bp.route("/get_all_users", methods=["GET"])
-def get_all_users():
-    session = SessionLocal()
-    
-    try:
-        users = session.query(User).all()
-        
-        result = []
-        for user in users:
-            result.append({
-                "id": user.id,
-                "email": user.email,
-                "name": user.name,
-                "pfp": user.pfp
-            })
-            
-        return jsonify({"users": result}), 200
-            
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-        
-    finally:
-        session.close()
