@@ -38,3 +38,10 @@ or
 
 - cd server
 - python3 -m flask --app app run
+
+#### AI Benchmarks
+https://livebench.ai/#/
+
+https://lmarena.ai/
+
+https://web.lmarena.ai/leaderboard
