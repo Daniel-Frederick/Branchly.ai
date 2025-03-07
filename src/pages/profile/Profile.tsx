@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import AiLists from "../../components/aiLists/AiLists";
 import Input from "../../components/input/Input";
 import { AiInterface } from "../../types/AiInterface";
 import { useAuth } from "../../FirebaseProvider";
 
 const Profile = () => {
-  const ais: AiInterface[] = [
+  const [ais, setAis] = useState<AiInterface[]>([
     {
       name: "OpenAI",
       call: () => console.log("returned OpenAI"),
@@ -34,25 +34,12 @@ const Profile = () => {
       logo: "💡",
       active: true,
     },
-  ];
-
-
-  // This should not be here, here for testing
-  const { user } = useAuth();
+  ]);
 
   return (
     <main>
-      {user ? (
-        <h1>Welcome, {user.displayName}</h1>
-      ) : (
-        <h1>Welcome, Random</h1>
-      )}
-      {/* TODO: This might be wrong, both components need to have access
-                to the same ai array, not separate copies.
-                This is because we need the "active" property to dynamically be shared.
-                Do we need to use Redux? */}
       <AiLists ais={ais}></AiLists>
-      <Input ais={ais}></Input>
+      <Input ais={ais} setAis={setAis}></Input>
     </main>
   );
 };

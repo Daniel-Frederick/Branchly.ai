@@ -13,22 +13,22 @@ const AiLists: React.FC<Prop> = ({ ais }) => {
       id="aiLists"
       className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
     >
-      {ais.map((ais) => (
+      {ais.filter((ai) => ai.active).map((ai) => (
         <div
-          key={ais.name}
-          className={`p-4 rounded-xl shadow-lg text-white ${ais.color} flex flex-col items-center text-center`}
+          key={ai.name}
+          className={`p-4 rounded-xl shadow-lg text-white ${ai.color} flex flex-col items-center text-center`}
         >
           {/* Logo */}
-          <div className="text-4xl">{ais.logo}</div>
+          <div className="text-4xl">{ai.logo}</div>
 
           {/* AI Name */}
           <div className="font-bold text-lg mt-2 break-words w-full">
-            {ais.name}
+            {ai.name}
           </div>
 
           {/* Call Button */}
           <button
-            onClick={ais.call}
+            onClick={ai.call}
             className="mt-3 bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-200 transition duration-200"
           >
             Call AI
