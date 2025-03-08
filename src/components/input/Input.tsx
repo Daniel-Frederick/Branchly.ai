@@ -11,6 +11,7 @@ interface Prop {
 const Input: React.FC<Prop> = ({ ais, setAis }) => {
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
   const [userInput, setUserInput] = useState<string>("");
+  const [history, setHistory] = useState<string[]>([]);
 
   const handleClick = async () => {
     if (inputRef.current) {
@@ -18,6 +19,8 @@ const Input: React.FC<Prop> = ({ ais, setAis }) => {
       if (inputValue !== "") {
         setUserInput(inputValue);
         inputRef.current.value = "";
+        setHistory((prevHistory) => [...prevHistory, inputValue]);
+
         const data = await Users.getUserHistory();
         console.log("Data: ", data);
       } else {
@@ -35,9 +38,7 @@ const Input: React.FC<Prop> = ({ ais, setAis }) => {
 
   const handleActiveToggle = (index: number) => {
     setAis((prevAis) =>
-      prevAis.map((ai, i) =>
-        i === index ? { ...ai, active: !ai.active } : ai
-      )
+      prevAis.map((ai, i) => (i === index ? { ...ai, active: !ai.active } : ai))
     );
   };
 
@@ -79,10 +80,13 @@ const Input: React.FC<Prop> = ({ ais, setAis }) => {
       </div>
 
       {/* History */}
-      <div id="history"></div>
+      <div id="history">
+        {history.map((history) => (
+          <p>{history}</p>
+        ))}
+      </div>
     </section>
   );
 };
 
 export default Input;
-

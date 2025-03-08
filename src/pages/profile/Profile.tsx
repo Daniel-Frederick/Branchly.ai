@@ -22,7 +22,8 @@ const Profile = () => {
     },
     {
       name: "VeryLongAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      call: () => console.log("returned VeryLongAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
+      call: () =>
+        console.log("returned VeryLongAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
       color: "bg-blue-500",
       logo: "⚡",
       active: true,
