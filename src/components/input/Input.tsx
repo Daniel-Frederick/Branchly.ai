@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "./Input.css";
 import Users from "../../services/users.ts";
 import { AiInterface } from "../../types/AiInterface";
+import UserHistory from "../userHistory/UserHistory.tsx";
 
 interface Prop {
   ais: AiInterface[];
@@ -84,6 +85,7 @@ const Input: React.FC<Prop> = ({ ais, setAis }) => {
         {history.map((history) => (
           <p>{history}</p>
         ))}
+        <UserHistory />
       </div>
     </section>
   );
