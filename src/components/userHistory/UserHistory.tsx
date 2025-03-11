@@ -1,12 +1,15 @@
 import React from "react";
 
-const UserHistory = () => {
+interface Prop {
+  list: string[];
+}
+
+const UserHistory: React.FC<Prop> = ({ list }) => {
   return (
     <>
-      {/* {history.map((history) => (
-        <p>{history}</p>
-      ))} */}
-      <p>testing</p>
+      {list.map((e, index) => (
+        <p key={index}>{e}</p>
+      ))}
     </>
   );
 };

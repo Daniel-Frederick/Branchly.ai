@@ -82,10 +82,7 @@ const Input: React.FC<Prop> = ({ ais, setAis }) => {
 
       {/* History */}
       <div id="history">
-        {history.map((history) => (
-          <p>{history}</p>
-        ))}
-        <UserHistory />
+        <UserHistory list={history} />
       </div>
     </section>
   );

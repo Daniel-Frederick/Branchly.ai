@@ -39,8 +39,8 @@ const Profile = () => {
 
   return (
     <main>
-      <AiLists ais={ais}></AiLists>
-      <Input ais={ais} setAis={setAis}></Input>
+      <AiLists ais={ais} />
+      <Input ais={ais} setAis={setAis} />
     </main>
   );
 };
