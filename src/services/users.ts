@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 class Users {
   // Define the base URL of your backend API (make sure this matches your Flask app's URL)
@@ -21,13 +21,13 @@ class Users {
     }
   }
 
-  async enterUser(userData): void {
+  async enterUser(userData): Promise<void> {
     try {
       const response = await axios.post(`${this.baseURL}/api/add_user`, {
         email: userData.email,
         name: userData.displayName,
-        pfp: userData.photoURL
-      })
+        pfp: userData.photoURL,
+      });
 
       console.log("User added to database:", response.data);
     } catch (error) {
