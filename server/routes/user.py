@@ -4,7 +4,7 @@ from models.user import User
 
 user_bp = Blueprint('user', __name__)
 
-@user_bp.route("/api/get_user/<email>", methods=["GET"])
+@user_bp.route("/get_user/<email>", methods=["GET"])
 def get_user(email):
     session = SessionLocal()
     try:
@@ -25,7 +25,7 @@ def get_user(email):
     finally:
         session.close()
 
-@user_bp.route("/api/get_all_users", methods=["GET"])
+@user_bp.route("/get_all_users", methods=["GET"])
 def get_all_users():
     session = SessionLocal()
     try:
@@ -37,7 +37,7 @@ def get_all_users():
     finally:
         session.close()
 
-@user_bp.route("/api/add_user", methods=["POST"])
+@user_bp.route("/add_user", methods=["POST"])
 def add_user():
     if not request.is_json:
         return jsonify({"error": "Request must be JSON"}), 400
