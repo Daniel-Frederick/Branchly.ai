@@ -45,3 +45,11 @@ https://livebench.ai/#/
 https://lmarena.ai/
 
 https://web.lmarena.ai/leaderboard
+
+### TO DO
+- Finish Flask backend
+- Host the website - Firebase is free but I want to look for an alternative if possible
+- Add Docker files to make app runnable in docker
+- Use PyTorch to create our own AI agent
+- Add Electron to make a standalone version
+- Could I somehow put this in Kubernetes?
