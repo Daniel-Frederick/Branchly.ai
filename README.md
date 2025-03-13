@@ -53,3 +53,4 @@ https://web.lmarena.ai/leaderboard
 - Use PyTorch to create our own AI agent
 - Add Electron to make a standalone version
 - Could I somehow put this in Kubernetes?
+- Create Documention with Draw.io and mkdocs
