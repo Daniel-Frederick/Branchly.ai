@@ -4,11 +4,8 @@ from database import init_db
 from routes.user import user_bp
 
 app = Flask(__name__)
-# What is a Preflight request?
-# CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
-# For some reason, this works, but the CORS above does not
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 init_db()
 
 app.register_blueprint(user_bp, url_prefix='/api')
