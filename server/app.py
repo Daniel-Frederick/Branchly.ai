@@ -5,7 +5,7 @@ from routes.user import user_bp
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173"]}})
 init_db()
 
 app.register_blueprint(user_bp, url_prefix='/api')

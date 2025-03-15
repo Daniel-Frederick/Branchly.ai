@@ -13,10 +13,17 @@ const Home = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    if (user) {
-      // Store new user in database
-      Users.enterUser(user);
+    const enterUser = async () => {
+      if (user) {
+        try {
+          // Asynchronously store new user in database
+          await Users.enterUser(user);
+        } catch (error) {
+          console.error("Error entering user: ", error);
+        }  
+      }
     }
+    enterUser();
   }, [user]);
 
   return (
@@ -24,7 +31,7 @@ const Home = () => {
       {/* Logo Section */}
 
       <div className="logo">
-        <img src={logo} alt="AI Prompt Explorer Logo" />
+        <img src={logo} alt="Branchly.ai Logo" />
       </div>
 
       {/* Title */}
@@ -58,12 +65,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// uid: Unique identifier
-// displayName: User's name from Google profile
-// email: User's email address
-// photoURL: URL to the user's profile picture
-// emailVerified: Boolean indicating if email is verified
-// phoneNumber: If available
-// providerData: Additional provider-specific information
-// metadata: Contains creation time and last sign-in time
