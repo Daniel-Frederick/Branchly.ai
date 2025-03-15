@@ -1,14 +1,10 @@
 import React, { useEffect } from "react";
 import "./Home.css";
-import logo from "../../assets/branchlyai.jpg"; // Ensure you have a relevant image
+import logo from "../../assets/branchlyai.jpg";
 import { signInWithGoogle, logout } from "../../firebase.ts";
 import { useAuth } from "../../FirebaseProvider.tsx";
 import Users from "../../services/users";
 
-// This component will contain home page:
-// The Logo: A magnifiing glass looking at 'AI'
-// The name: AI Prompt Explorer
-// Google OAuth Login: https://www.youtube.com/watch?v=tgO_ADSvY1I
 const Home = () => {
   const { user } = useAuth();
 
