@@ -7,4 +7,6 @@ class Prompt(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     prompt_text = Column(Text, nullable=False)
+    # timestamp = Column(Date, nullable=False) # Added feature later
     user = relationship("User", back_populates="prompts")
+

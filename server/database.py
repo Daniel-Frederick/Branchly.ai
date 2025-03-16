@@ -10,6 +10,5 @@ Base = declarative_base()
 
 def init_db():
     # Import models here to ensure they're registered with Base
-    from models.user import User
-    from models.prompt import Prompt
+    from models import User, Prompt
     Base.metadata.create_all(bind=engine)
