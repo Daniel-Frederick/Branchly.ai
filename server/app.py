@@ -8,9 +8,9 @@ app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173"]}})
 init_db()
 
+# TODO: Create a Login Flow w/ frontend
 app.register_blueprint(user_bp, url_prefix='/api')
 
-# Optional test route (move or remove later)
 @app.route("/api")
 def home():
     return jsonify({"message": "Hello from Flask!"})
