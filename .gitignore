@@ -27,6 +27,7 @@ server/__pycache__
 server/*/__pycache__
 server/flask_env
 server/venv
-server/*.db 
+server/*.db
+server/database
 
 .env
