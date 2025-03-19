@@ -2,11 +2,7 @@ import axios from "axios";
 
 class Users {
   // Define the base URL of your backend API (make sure this matches your Flask app's URL)
-  private baseURL: string;
-
-  constructor(baseURL: string) {
-    this.baseURL = baseURL;
-  }
+  private baseURL: string = "http://127.0.0.1:5000";
 
   // Method to fetch user history (GET request)
   async getUserHistory(): Promise<string> {
@@ -29,7 +25,7 @@ class Users {
         pfp: userData.photoURL,
       });
 
-      console.log("User added to database:", response.data);
+      console.log("User added to database: ", response.data);
     } catch (error) {
       console.error("Error: could not enter new user: ", error);
       throw new Error("Failed to enter user");
@@ -37,4 +33,4 @@ class Users {
   }
 }
 
-export default new Users("http://127.0.0.1:5000");
+export default new Users();

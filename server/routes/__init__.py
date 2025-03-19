@@ -1,2 +1,3 @@
 from .user import User
-__all__ = ['User']
+from .prompt import Prompt
+__all__ = ['User', 'Prompt']

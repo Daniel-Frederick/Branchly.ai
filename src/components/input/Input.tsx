@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import "./Input.css";
 import Users from "../../services/users.ts";
 import { AiInterface } from "../../types/AiInterface";
-import UserHistory from "../userHistory/UserHistory.tsx";
+import UserHistory from "../userHistory/UserHistory"
+import Prompts from "../../services/prompts"
 
 interface Prop {
   ais: AiInterface[];
@@ -22,8 +23,18 @@ const Input: React.FC<Prop> = ({ ais, setAis }) => {
         inputRef.current.value = "";
         setHistory((prevHistory) => [...prevHistory, inputValue]);
 
-        const data = await Users.getUserHistory();
-        console.log("Data: ", data);
+        // TODO: Change this so its not hard coded
+        const prompt = {
+          user_id: 1,
+          prompt: userInput,
+        }
+
+        try {
+          await Prompts.enterPrompt(prompt)
+          console.log("Data: ", data);
+        } catch (e) {
+          console.log("Error: Prompt in Input component failed: ", e)
+        }
       } else {
         console.log("Input is empty!");
       }
