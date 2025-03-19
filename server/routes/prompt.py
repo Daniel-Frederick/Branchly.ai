@@ -1,10 +1,21 @@
+from os import error
 from flask import Blueprint, jsonify, request
 from database import SessionLocal
 from models import Prompt
 
 prompt_bp = Blueprint('prompt', __name__)
 
-# TODO: Create a GET request to obtain all inputs to display on start up
+@prompt_bp.route("/get_all_prompts", methods=["GET"])
+def get_all_prompts():
+    session = SessionLocal()
+    try:
+        prompts = session.query(Prompt).all()
+        result = [{"id": prompt.id, "user_id": prompt.user_id, "prompt_text": prompt.prompt_text} for prompt in prompts]
+        return jsonify({"message": "All Prompts retrieved", "prompts": result}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    finally: 
+        session.close()
 
 @prompt_bp.route("/add_prompt", methods=["POST"])
 def add_prompt():

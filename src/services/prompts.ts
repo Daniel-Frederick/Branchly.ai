@@ -3,6 +3,16 @@ import axios from "axios";
 class Prompts {
   private baseURL: string = "http://127.0.0.1:5000";
 
+  async get_all_prompts(): Promise<void> {
+    try {
+      const response = await axios.get(`${this.baseURL}/api/get_all_prompts`);
+      return response.data;
+    } catch (e) {
+      console.log("Error fetching all prompts: ", e)
+      throw new Error("Failed to fetch all Prompts")
+    }
+  }
+
   async enterPrompt(prompt): Promise<void> {
     try {
       const response = await axios.post(`${this.baseURL}/api/add_prompt`, {

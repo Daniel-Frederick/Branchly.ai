@@ -31,7 +31,7 @@ def get_all_users():
     try:
         users = session.query(User).all()
         result = [{"id": user.id, "email": user.email, "name": user.name, "pfp": user.pfp} for user in users]
-        return jsonify({"message": "Users retrieved", "users": result}), 200
+        return jsonify({"message": "All Users retrieved", "users": result}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     finally:

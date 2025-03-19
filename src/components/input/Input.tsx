@@ -31,7 +31,6 @@ const Input: React.FC<Prop> = ({ ais, setAis }) => {
 
         try {
           await Prompts.enterPrompt(prompt)
-          console.log("Data: ", data);
         } catch (e) {
           console.log("Error: Prompt in Input component failed: ", e)
         }

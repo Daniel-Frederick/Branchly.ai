@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Prompts from "../../services/prompts";
 
-interface Prop {
-  list: string[];
-}
+const UserHistory = () => {
+  const [prompts, setPrompts] = useState([]);
 
-const UserHistory: React.FC<Prop> = ({ list }) => {
+  useEffect(() => {
+    async function fetchPrompts() {
+      try {
+        const data = await Prompts.get_all_prompts();
+        setPrompts(data.prompts);
+      } catch (error) {
+        console.error("Error fetching prompts:", error);
+      }
+    }
+    fetchPrompts();
+  }, []);
+
   return (
     <>
-      {list.map((e, index) => (
-        <p key={index}>{e}</p>
+      {prompts.map((prompt, index) => (
+        <p key={index}>{prompt.prompt_text}</p>
       ))}
     </>
   );
 };
 
 export default UserHistory;
+
