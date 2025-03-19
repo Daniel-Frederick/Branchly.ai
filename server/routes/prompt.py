@@ -4,16 +4,20 @@ from models import Prompt
 
 prompt_bp = Blueprint('prompt', __name__)
 
+# TODO: Create a GET request to obtain all inputs to display on start up
+
 @prompt_bp.route("/add_prompt", methods=["POST"])
 def add_prompt():
     # Check if the request is JSON
     if not request.is_json:
         return jsonify({"error": "Request must be JSON"}), 400
 
-    # Get data from the JSON request
+    # TODO: Get data from the JSON request
     data = request.get_json()
-    user_id = data.get("user_id") # This is not good to have here
-    prompt_text = data.get("prompt")
+    # user_id = data.get("user_id") # This is not good to have here
+    # prompt_text = data.get("prompt")
+    user_id = 1
+    prompt_text = "testing prompt"
 
     # Validate required fields
     if not user_id or not prompt_text:
